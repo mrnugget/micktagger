@@ -1,0 +1,13 @@
+---
+geilo: !ruby/object:MickTagger::Tag
+  files:
+  - /Users/mrnugget/code/netstaty.rb
+  name: geilo
+nett: !ruby/object:MickTagger::Tag
+  files:
+  - /Users/mrnugget/code/netstaty.rb
+  name: nett
+genius: !ruby/object:MickTagger::Tag
+  files:
+  - /Users/mrnugget/code/strstr/strstr.rb
+  name: genius
