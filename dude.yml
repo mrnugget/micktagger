@@ -11,3 +11,11 @@ genius: !ruby/object:MickTagger::Tag
   files:
   - /Users/mrnugget/code/strstr/strstr.rb
   name: genius
+precious: !ruby/object:MickTagger::Tag
+  files:
+  - /Users/mrnugget/.vimrc
+  name: precious
+hot: !ruby/object:MickTagger::Tag
+  files:
+  - /Users/mrnugget/Pictures/great-ass-hq-7.jpeg
+  name: hot
