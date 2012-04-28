@@ -1,9 +1,9 @@
 module MickTagger
   class DB
-    attr_accessor :db
+    attr_accessor :tags
 
     def initialize(db_file = "$HOME/.micktagger.yml")
-      @db_file = db_file
+      @db_file = File.expand_path db_file
       @tags = load_db(@db_file)
     end
 
@@ -17,6 +17,7 @@ module MickTagger
       @tags.each do |name, tag_object|
         file_tags << name if tag_object.files.include? file
       end
+      file_tags
     end
 
     def tag_file!(file, tag_names)

@@ -1,30 +1,25 @@
 #!/usr/bin/env ruby -wKU
 
+require 'optparse'
 require './lib/micktagger'
 
-db = MickTagger::DB.new("dude.yml")
+module MickTagger
+  class App
+    def self.parse(args)
+      options           = {}
+      options[:db_file] = '~/.micktagger.yml'
 
-if File.file? ARGV[0] || File.directory?(ARGV[0])
-
-  file = File.expand_path(ARGV[0])
-  if ARGV[1] == "add" || ARGV[1] == "-a"
-    db.tag_file!(file, ARGV[2..-1])
-  elsif ARGV[1] == "remove" || ARGV[1] == "-r"
-    db.untag_file!(file, ARGV[2..-1])
-  else
-    puts "Show tags of file '#{file}':"
-    db.show_tags(file)
-  end
-
-elsif ARGV[0] == "show"
-
-  if File.file? ARGV[1] || File.directory?(ARGV[1]) 
-    puts "Show tags of file '#{ARGV[1]}':"
-    db.show_tags(File.expand_path(ARGV[1]))
-  else
-    puts "Show files tagged with '#{ARGV[1]}':"
-    db.show_files(ARGV[1])
+      if args[0] && File.exists?(args[0]) && args[1]
+        db = DB.new(options[:db_file])
+        db.tag_file!(File.expand_path(args[0]), [args[1]])
+        db.save
+      elsif args[0] && File.exists?(args[0])
+        db = DB.new(options[:db_file])
+        puts db.tags_of_file(args[0])
+        db.save
+      end
+    end
   end
 end
 
-db.save
+MickTagger::App.parse(ARGV)

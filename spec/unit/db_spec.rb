@@ -25,7 +25,7 @@ describe DB do
 
   it "allows to save the DB to the file" do
     File.should_receive(:write).with(
-      "spec/fixtures/test_db_empty.yml",
+      File.expand_path("spec/fixtures/test_db_empty.yml"),
       Hash.new.to_yaml
     )
 
