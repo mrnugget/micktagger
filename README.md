@@ -6,14 +6,14 @@ tag files and saves those tags to `~/.micktagger.yml`
 ## Example
 
 ```
-$ ruby -Ilib bin/micktagger dude.yml delete_this
+$ micktagger dude.yml delete_this
 Added tag 'delete_this' to file 'dude.yml'.
-$ ruby -Ilib bin/micktagger Gemfile important!
+$ micktagger Gemfile important!
 Added tag 'important!' to file 'Gemfile'.
-$ ruby -Ilib bin/micktagger dude.yml
+$ micktagger dude.yml
 Tags associated with file 'dude.yml':
 delete_this
-$ ruby -Ilib bin/micktagger important!
+$ micktagger important!
 Files tagged with 'important!':
 /Users/mrnugget/code/micktagger/Gemfile
 ```
