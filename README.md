@@ -27,3 +27,9 @@ Files tagged with 'important!':
 - Clean up `MickTagger::DB`: The interface should be smaller. Maybe add an
   additional layer between `MickTagger::DB` and `MickTagger::App` that creates
   the Tags and DB just stores them.
+
+## License
+
+MickTagger is released under the MIT license:
+
+- www.opensource.org/licenses/MIT

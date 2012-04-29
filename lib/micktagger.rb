@@ -1,3 +1,3 @@
-require './lib/micktagger/tag'
-require './lib/micktagger/db'
+require 'micktagger/tag'
+require 'micktagger/db'
 require 'yaml'
