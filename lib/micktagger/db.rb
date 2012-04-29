@@ -8,8 +8,11 @@ module MickTagger
     end
 
     def files_of_tag(tag_name)
-      tag = find_tag tag_name
-      tag.files
+      if tag = find_tag(tag_name)
+        tag.files
+      else
+        []
+      end
     end
 
     def tags_of_file(file)
