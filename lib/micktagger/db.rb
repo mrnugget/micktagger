@@ -2,7 +2,7 @@ module MickTagger
   class DB
     attr_accessor :tags
 
-    def initialize(db_file = "$HOME/.micktagger.yml")
+    def initialize(db_file = File.expand_path('~/.micktagger.yml'))
       @db_file = File.expand_path db_file
       @tags = load_db(@db_file)
     end

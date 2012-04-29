@@ -6,7 +6,7 @@ module MickTagger
   class App
     def self.parse(args)
       options           = {}
-      options[:db_file] = '~/.micktagger.yml'
+      options[:db_file] = File.expand_path('~/.micktagger.yml')
 
       db = DB.new(options[:db_file])
 
