@@ -18,6 +18,28 @@ Files tagged with 'important!':
 /Users/mrnugget/code/micktagger/Gemfile
 ```
 
+## Installation
+
+MickTagger has a gemspec, but since the code isn't really that good, there are
+lots of bugs and errors in the app, I don't want to push it to rubygems.org yet.
+
+To install this programm, follow these steps:
+
+- `git clone git://github.com/mrnugget/micktagger.git`
+- `cd micktagger`
+- `gem build micktagger.gemspec`
+- `gem install micktagger-0.0.1.gem`
+
+Now start a new shell, and you should be able to use the micktagger command. 
+
+### Running the tests
+
+The tests are all rspec tests. So in order to run them, follow these steps:
+
+- `cd micktagger`
+- `bundle install`
+- `bundle exec rspec spec/`
+
 ## TODO
 
 - Throw out horrible code in `bin/micktagger`, use OptionParser when necessary
