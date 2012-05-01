@@ -34,11 +34,11 @@ module MickTagger
         # Adding a tag when called with 'app filename -a tagname'
         if args[0] && File.exists?(args[0]) && !options[:tags_to_add].empty?
           db.tag_file!(File.expand_path(args[0]), options[:tags_to_add])
-          puts "Added tags '#{options[:tags_to_add]}' to file '#{args[0]}'."
+          puts "Added tags '#{options[:tags_to_add].join(', ')}' to file '#{args[0]}'."
         # Removing a tag when called with 'app filename -r tagname'
         elsif args[0] && File.exists?(args[0]) && !options[:tags_to_remove].empty?
           db.untag_file!(File.expand_path(args[0]), options[:tags_to_remove])
-          puts "Removed tag '#{options[:tags_to_remove]}' from file '#{args[0]}'."
+          puts "Removed tag '#{options[:tags_to_remove].join(', ')}' from file '#{args[0]}'."
         # Show tags of a file when called with only a filename as argument
         elsif args[0] && File.exists?(args[0])
           tags_of_file = db.tags_of_file(File.expand_path(args[0]))
