@@ -36,8 +36,10 @@ module MickTagger
 
     def untag_file!(file, tag_names)
       tag_names.each do |tag_name| 
-        tag = find_tag(tag_name)
-        remove_file_from_tag(tag, file) unless tag
+        if tag = find_tag(tag_name)
+          remove_file_from_tag(tag, file)
+          tag.no_files? ? remove_tag(tag) : save_tag(tag)
+        end
       end
     end
 
@@ -62,7 +64,6 @@ module MickTagger
       
       def remove_file_from_tag(tag, file)
         tag.remove_file(file)
-        tag.no_files? ? remove_tag(tag) : save_tag(tag)
       end
 
       def remove_tag(tag)
