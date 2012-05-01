@@ -26,10 +26,10 @@ module MickTagger
           end
         # Show files associated with a tag when called with tagname
         elsif !File.exists?(args[0])
-          files_of_tag = db.files_of_tag(args[0])
-          unless files_of_tag.empty?
+          files = db.files_tagged_with(args[0])
+          unless files.empty?
             puts "Files tagged with '#{args[0]}':"
-            puts files_of_tag
+            puts files
           else
             puts "No files tagged with '#{args[0]}'."
           end

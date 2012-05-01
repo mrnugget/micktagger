@@ -30,7 +30,7 @@ describe App do
       args = %w[cool]
       db = stub
       DB.should_receive(:new).with(File.expand_path('~/.micktagger.yml')) { db }
-      db.should_receive(:files_of_tag).with('cool').and_return(File.expand_path('spec/fixtures/test_picture.jpg'))
+      db.should_receive(:files_tagged_with).with('cool').and_return(File.expand_path('spec/fixtures/test_picture.jpg'))
       db.should_receive(:save)
 
       App.parse(args)

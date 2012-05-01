@@ -42,7 +42,7 @@ describe DB do
     end
 
     it "allows to see the files associated with a tag" do
-      @db.files_of_tag("great").should include("testing.txt")
+      @db.files_tagged_with("great").should include("testing.txt")
     end
   end
 end

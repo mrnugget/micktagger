@@ -2,12 +2,12 @@ module MickTagger
   class DB
     attr_accessor :tags
 
-    def initialize(db_file = File.expand_path('~/.micktagger.yml'))
-      @db_file = File.expand_path db_file
+    def initialize(db_file = '~/.micktagger.yml')
+      @db_file = File.expand_path(db_file)
       @tags = load_db(@db_file)
     end
 
-    def files_of_tag(tag_name)
+    def files_tagged_with(tag_name)
       if tag = find_tag(tag_name)
         tag.files
       else
@@ -30,15 +30,15 @@ module MickTagger
       end
     end
 
+    def tag_files!(files, tag_name)
+      files.each { |f| tag_file!(f, [tag_name]) }
+    end
+
     def untag_file!(file, tag_names)
       tag_names.each do |tag_name| 
         tag = find_tag(tag_name)
         remove_file_from_tag(tag, file) unless tag
       end
-    end
-
-    def tag_files!(files, tag_name)
-      files.each { |f| tag_file!(f, [tag_name]) }
     end
 
     def save
@@ -73,10 +73,6 @@ module MickTagger
         @tags[tag.name] = tag
       end
 
-      def print_tag_files(tag) 
-        tag.files.each { |f| puts f }
-      end
-      
       def write_db
         File.write(@db_file, @tags.to_yaml)
       end
