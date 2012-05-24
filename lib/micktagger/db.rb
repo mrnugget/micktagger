@@ -59,7 +59,9 @@ module MickTagger
       end
 
       def load_db(db_file)
-        YAML.load_file(db_file) || {}
+        YAML.load_file(db_file)
+      rescue TypeError
+        {}
       end
       
       def remove_file_from_tag(tag, file)

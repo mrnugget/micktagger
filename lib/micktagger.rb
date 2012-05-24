@@ -1,5 +1,5 @@
+require 'yaml'
+require 'optparse'
 require 'micktagger/tag'
 require 'micktagger/db'
 require 'micktagger/app'
-require 'yaml'
-require 'optparse'

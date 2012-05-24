@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe DB do
-
   before(:each) do
-    @db = DB.new("spec/fixtures/test_db_empty.yml")
+    @db = DB.new("./spec/fixtures/test_db_empty.yml")
 
     @tag = stub(:tag)
     @tag.stub(name: "great")
