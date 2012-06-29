@@ -1,5 +1,6 @@
-load File.join(File.dirname(__FILE__), '../bin/micktagger')
-require_relative '../lib/micktagger'
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'micktagger'
 
 include MickTagger
 
