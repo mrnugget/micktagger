@@ -4,15 +4,11 @@ module MickTagger
 
     def initialize(db_file = '~/.micktagger.yml')
       @db_file = File.expand_path(db_file)
-      @tags = load_db(@db_file)
+      @tags    = load_db(@db_file)
     end
 
     def files_tagged_with(tag_name)
-      if tag = find_tag(tag_name)
-        tag.files
-      else
-        []
-      end
+      find_tag(tag_name).files || []
     end
 
     def tags_of_file(file)
