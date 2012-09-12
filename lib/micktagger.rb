@@ -1,5 +1,8 @@
-require 'yaml'
 require 'optparse'
-require 'micktagger/tag'
-require 'micktagger/db'
-require 'micktagger/app'
+require 'json'
+require 'micktagger/dotfile_handler'
+require 'micktagger/cli'
+require 'micktagger/version'
+
+module MickTagger
+end

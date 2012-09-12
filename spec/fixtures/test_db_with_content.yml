@@ -1,6 +1,0 @@
----
-great: !ruby/object:MickTagger::Tag
-  files:
-  - testing.txt
-  - picture.jpg
-  name: great
