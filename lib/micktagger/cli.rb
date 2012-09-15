@@ -22,6 +22,11 @@ module MickTagger
         params[:tag]    = tag
       end
 
+      parser.on('-h', '--help [TAG]', String) do |tag|
+        puts parser
+        exit
+      end
+
       files = parser.parse!
       files.map! {|file| File.expand_path(file) }
 
