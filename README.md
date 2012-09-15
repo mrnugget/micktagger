@@ -22,6 +22,21 @@ $ mt -l to_be_deleted
 /Users/mrnugget/tmp/git_testing
 ```
 
+MickTagger loves pipes:
+
+```
+$ ls
+empty_directory old.zip
+$ ls | mt -a to_be_deleted
+$ mt -l to_be_deleted
+/Users/mrnugget/tmp/empty_directory
+/Users/mrnugget/tmp/old.zip
+$ mt -l to_be_deleted | xargs rm -rf
+$ ls
+<dir is empty>
+```
+... and a lot more!
+
 ## Installation
 
 `gem install micktagger`
