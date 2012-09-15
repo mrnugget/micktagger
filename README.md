@@ -1,4 +1,5 @@
 # MickTagger
+[![Build Status](https://secure.travis-ci.org/mrnugget/micktagger.png)](http://travis-ci.org/mrnugget/micktagger)
 
 MickTagger is a command line utility that allows you to tag files.
 
