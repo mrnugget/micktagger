@@ -28,6 +28,11 @@ module MickTagger
       end
 
       files = parser.parse!
+
+      if files.empty? && params[:action] != :list
+        $stdin.each_line.each { |line| files << line.strip }
+      end
+
       files.map! {|file| File.expand_path(file) }
 
       case params[:action]

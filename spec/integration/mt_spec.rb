@@ -28,4 +28,15 @@ describe 'micktagger command line interface' do
     dotfile = read_and_parse_fake_dotfile
     dotfile.should_not include(readme_full_path)
   end
+
+  it 'allows me to tag files piped to STDIN' do
+    dir = "#{ENV['HOME']}"
+
+    `cd #{dir} && ls #{dir} | mt -a important`
+
+    dotfile = read_and_parse_fake_dotfile
+
+    dotfile["#{dir}/readme.md"].should include('important')
+    dotfile["#{dir}/delete_after_reading.txt"].should include('important')
+  end
 end
