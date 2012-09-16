@@ -1,6 +1,6 @@
 module MickTagger
   class CLI
-    def self.dance!
+    def self.dance!(args)
       dotfile_handler = DotfileHandler.new
       parser          = OptionParser.new
 
@@ -27,7 +27,7 @@ module MickTagger
         exit
       end
 
-      files = parser.parse!
+      files = parser.parse!(args)
 
       if files.empty? && params[:action] && params[:action] != :list
         $stdin.each_line.each { |line| files << line.strip }
