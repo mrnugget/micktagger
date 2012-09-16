@@ -6,7 +6,7 @@ module MickTagger
     end
 
     def add_tag_to(file, tag)
-      @content[file] = [] unless @content[file]
+      @content[file] ||= []
       @content[file] << tag
       @content[file].uniq!
     end
