@@ -43,4 +43,20 @@ describe 'micktagger command line interface' do
     dotfile["#{dir}/readme.md"].should include('important')
     dotfile["#{dir}/delete_after_reading.txt"].should include('important')
   end
+
+  it 'allows me to remove files that have been deleted' do
+    readme_full_path = File.expand_path('../../../README.md', __FILE__)
+    MickTagger::CLI.dance!(['-a', 'important', 'README.md'])
+
+    File.stub(exists?: true)
+    File.stub(:exists?).with(readme_full_path).and_return(false)
+
+    output = capture_stdout do
+      MickTagger::CLI.dance!(['-c'])
+    end
+    output.string.should match("Deleted files:\n#{readme_full_path}\n")
+
+    dotfile = read_and_parse_fake_dotfile
+    dotfile.should_not include(readme_full_path)
+  end
 end

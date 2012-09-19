@@ -38,4 +38,23 @@ describe MickTagger::FileStore do
       store.content['myfile.txt'].should be_nil
     end
   end
+
+  describe '#remove_deleted_files!' do
+    it 'allows me to remove files that no longer exist' do
+      store.add_tag_to('README.md', 'cool')
+
+      store.remove_deleted_files!
+
+      store.content.should_not include('myfile.txt')
+    end
+
+    it 'returns an array of the deleted files' do
+      store.add_tag_to('README.md', 'cool')
+
+      deleted_files = store.remove_deleted_files!
+
+      deleted_files.should include('myfile.txt')
+      deleted_files.should_not include('README.md')
+    end
+  end
 end

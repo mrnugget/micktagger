@@ -20,5 +20,15 @@ module MickTagger
       @content[file].delete(tag)
       @content.delete(file) if @content[file].empty?
     end
+
+    def remove_deleted_files!
+      @content.keys.inject([]) do |deleted_files, file|
+        unless File.exists?(file)
+          @content.delete(file)
+          deleted_files << file
+        end
+        deleted_files
+      end
+    end
   end
 end

@@ -13,6 +13,10 @@ module MickTagger
         params[:tag]    = tag
       end
 
+      parser.on('-c', '--clean-up') do
+        params[:action] = :cleanup
+      end
+
       parser.on('-d', '--delete [TAG]', String) do |tag|
         params[:action] = :delete
         params[:tag]    = tag
@@ -30,7 +34,7 @@ module MickTagger
 
       files = parser.parse!(args)
 
-      if files.empty? && params[:action] && params[:action] != :list
+      if files.empty? && params[:action] == (:add || :delete)
         $stdin.each_line.each { |line| files << line.strip }
       end
 
@@ -48,6 +52,9 @@ module MickTagger
         files.each { |file| file_store.remove_tag_from(file, params[:tag]) }
       when :list
         output_lines << file_store.files_for(params[:tag])
+      when :cleanup
+        output_lines << 'Deleted files:'
+        file_store.remove_deleted_files!.each {|file| output_lines << file }
       end
 
       dotfile_handler.save_to_file(file_store.content)
